@@ -1,0 +1,6 @@
+[Unit]
+Description=Sends sunrise command to trinket
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/stripSunrise
