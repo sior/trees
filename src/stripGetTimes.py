@@ -43,11 +43,14 @@ sunsetMinute = int(results.group(4))
 if sunriseMinute < 15:
     sunriseHour -= 1
     sunriseMinute = 60 - (15 - sunriseMinute)
-
+else:
+    sunriseMinute -= 15
+ 
 if sunsetMinute < 15:
     sunsetHour -= 1
     sunsetMinute = 60 - (15 - sunsetMinute)
-
+else:
+    sunsetMinute -= 15
 sunsetFile = open("/etc/systemd/system/stripSunset.timer", 'w')
 sunriseFile = open("/etc/systemd/system/stripSunrise.timer", 'w')
 sunsetFile.write(setTemplate % (sunsetHour, sunsetMinute))
