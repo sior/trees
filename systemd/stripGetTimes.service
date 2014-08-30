@@ -1,0 +1,6 @@
+[Unit]
+Description=Get time of sunrise and sunset
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/stripGetTimes

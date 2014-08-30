@@ -1,0 +1,11 @@
+[Unit]
+Description=Get time of sunrise and sunset
+
+[Timer]
+OnBootSec=10min
+
+OnCalendar=*-*-* 00:00:00
+Unit stripGetTimes.service
+
+[Install]
+WantedBy=multi-user.target
