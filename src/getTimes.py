@@ -8,8 +8,6 @@ riseTemplate = '''
 Description=Triggers sunrise
 
 [Timer]
-OnBootSec=10min
-
 OnCalendar=*-*-* %02d:%02d
 Unit=stripSunrise.service
 
@@ -21,8 +19,6 @@ setTemplate = '''
 Description=Triggers sunset
 
 [Timer]
-OnBootSec=10min
-
 OnCalendar=*-*-* %02d:%02d
 Unit=stripSunset.service
 
@@ -44,8 +40,8 @@ sunriseMinute = int(results.group(2))
 sunsetHour = int(results.group(3))
 sunsetMinute = int(results.group(4))
 
-sunsetFile = open("/etc/systemd/system/stripSunset.timer", w)
-sunriseFile = open("/etc/systemd/system/stripSunrise.timer", w)
+sunsetFile = open("/etc/systemd/system/stripSunset.timer", 'w')
+sunriseFile = open("/etc/systemd/system/stripSunrise.timer", 'w')
 sunsetFile.write(setTemplate % (sunsetHour, sunsetMinute))
 sunriseFile.write(riseTemplate % (sunriseHour, sunriseMinute))
 sunsetFile.close()
