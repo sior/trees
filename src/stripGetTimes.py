@@ -60,6 +60,12 @@ sunriseFile.write(riseTemplate % (sunriseHour, sunriseMinute))
 sunsetFile.close()
 sunriseFile.close()
 
+logFile = open("/var/log/strip.log", "a")
+logFile.write(updateTime + " updated times\n")
+logFile.write(updateTime + " sunrise set to " + str(sunriseHour) + ":" + sunriseMinute + "\n")
+logFile.write(updateTime + " sunset set to " + str(sunsetHour) + ":" + sunsetMinute + "\n")
+logFile.close()
+
 call(['systemctl', 'enable', 'stripSunrise.timer'])
 call(['systemctl', 'enable', 'stripSunset.timer'])
 call(['systemctl', 'start', 'stripSunrise.timer'])
