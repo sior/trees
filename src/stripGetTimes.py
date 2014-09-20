@@ -2,6 +2,7 @@
 import re
 import urllib2
 from subprocess import call
+import time
 
 riseTemplate = '''
 [Unit]
@@ -26,6 +27,7 @@ Unit=stripSunset.service
 WantedBy=multi-user.target
 '''
 
+updateTime = time.strftime('%m/%d/%y %H:%M')
 call(['systemctl', 'disable', 'stripSunrise.timer'])
 call(['systemctl', 'disable', 'stripSunset.timer'])
 call(['systemctl', 'stop', 'stripSunrise.timer'])
