@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Tree Control Panel</title>
+    <link rel="stylesheet" href="/static/jquery-ui.min.css">
+    <script type="text/javascript" src="/static/external/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#onButton").button();
+            $("#offButton").button();
+            $("#sunriseButton").button();
+            $("#sunsetButton").button();
+            $("#sunriseDemoButton").button();
+            $("#sunsetDemoButton").button();
+            $("#cloudButton").button();
+            var buttons = $(".ui-button");
+            buttons.each(getWidth);
+            buttons.width(buttonWidth + 5);
+            buttons.css('margin-top', '2px');
+            buttons.css('margin-bottom', '2px');
+        });
+        var buttonWidth = 0;
+        function getWidth(){
+            var myWidth = $(this).width();
+            if (myWidth > buttonWidth){
+                buttonWidth = myWidth;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="timeContainer" class="ui-widget">
+        <div id="timeHeader" class="ui-widget-header">Times</div>
+        <div id="timeContent" class="ui-widget-content">
+            Sunrise: %02d:%02d<br>
+            Sunset: %02d:%02d<br>
+            Last updated: %02d/%02d/%02d %02d:%02d<br>
+        </div>
+    </div>
+    <div id="buttons" style="text-align:center">
+        <div id="onButton">On</div><br>
+        <div id="offButton">Off</div><br>
+        <div id="sunriseButton">Sunrise</div><br>
+        <div id="sunsetButton">Sunset</div><br>
+        <div id="sunriseDemoButton">Sunrise Demo</div><br>
+        <div id="sunsetDemoButton">Sunset Demo</div><br>
+        <div id="cloudButton">Cloud</div><br>
+    </div>
+</body>
+</html>
