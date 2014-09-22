@@ -6,8 +6,10 @@ class Server(object):
     @cherrypy.expose
     def index(self):
         page = open('index.html', 'r').read()
-        return page % (1, 2, 3, 4, 5, 6, 7, 8, 9)
-    
+        page =  page % (1, 2, 3, 4, 5, 6, 7, 8, 9)
+	print page
+	return page
+ 
     @cherrypy.expose
     def stripOn(self):
         call(['stripOn'])
