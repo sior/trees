@@ -7,8 +7,7 @@ class Server(object):
     def index(self):
 	timeData = open('/var/log/stripTime.log', 'r').readlines()
         page = open('index.html', 'r').read()
-        page =  page % (1, 2, 3, 4, 5, 6, 7, 8, 9)
-	print page
+        page =  page % (int(timeData[0]), int(timeData[1]), int(timeData[2]), int(timeData[3]), timeData[4])
 	return page
  
     @cherrypy.expose
