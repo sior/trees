@@ -5,9 +5,11 @@ from subprocess import call
 class Server(object):
     @cherrypy.expose
     def index(self):
+	timeData = open('/var/log/stripTime.log', 'r').readlines()
         page = open('index.html', 'r').read()
-        return page % (1, 2, 3, 4, 5, 6, 7, 8, 9)
-    
+        page =  page % (int(timeData[0]), int(timeData[1]), int(timeData[2]), int(timeData[3]), timeData[4])
+	return page
+ 
     @cherrypy.expose
     def stripOn(self):
         call(['stripOn'])
