@@ -6,13 +6,13 @@
     <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#onButton").button();
-            $("#offButton").button();
-            $("#sunriseButton").button();
-            $("#sunsetButton").button();
-            $("#sunriseDemoButton").button();
-            $("#sunsetDemoButton").button();
-            $("#cloudButton").button();
+            $("#onButton").button().click(function() { $.get('stripOn.html');});
+            $("#offButton").button().click(function() { $.get('stripOff.html');});
+            $("#sunriseButton").button().click(function() { $.get('stripSunrise.html');});
+            $("#sunsetButton").button().click(function() { $.get('stripSunset.html');});
+            $("#sunriseDemoButton").button().click(function() { $.get('stripSunriseDemo.html');});
+            $("#sunsetDemoButton").button().click(function() { $.get('stripSunsetDemo.html');});
+            $("#cloudButton").button().click(function() { $.get('stripCloud.html');});
             var buttons = $(".ui-button");
             buttons.each(getWidth);
             buttons.width(buttonWidth + 5);
