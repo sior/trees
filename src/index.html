@@ -6,13 +6,13 @@
     <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#onButton").button().click(function() { $.get('stripOn.html');});
-            $("#offButton").button().click(function() { $.get('stripOff.html');});
-            $("#sunriseButton").button().click(function() { $.get('stripSunrise.html');});
-            $("#sunsetButton").button().click(function() { $.get('stripSunset.html');});
-            $("#sunriseDemoButton").button().click(function() { $.get('stripSunriseDemo.html');});
-            $("#sunsetDemoButton").button().click(function() { $.get('stripSunsetDemo.html');});
-            $("#cloudButton").button().click(function() { $.get('stripCloud.html');});
+            $("#onButton").button().click(function() { $.get('stripOn');});
+            $("#offButton").button().click(function() { $.get('stripOff');});
+            $("#sunriseButton").button().click(function() { $.get('stripSunrise');});
+            $("#sunsetButton").button().click(function() { $.get('stripSunset');});
+            $("#sunriseDemoButton").button().click(function() { $.get('stripSunriseDemo');});
+            $("#sunsetDemoButton").button().click(function() { $.get('stripSunsetDemo');});
+            $("#cloudButton").button().click(function() { $.get('stripCloud');});
             var buttons = $(".ui-button");
             buttons.each(getWidth);
             buttons.width(buttonWidth + 5);
