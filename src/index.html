@@ -29,23 +29,38 @@
     </script>
 </head>
 
-<body>
-    <div id="timeContainer" class="ui-widget">
-        <div id="timeHeader" class="ui-widget-header">Times</div>
-        <div id="timeContent" class="ui-widget-content">
-            Sunrise: %02d:%02d<br>
-            Sunset: %02d:%02d<br>
-            Last updated: %s<br>
+<body style="text-align:center" class="ui-widget-content">
+    <div id="pageContainer" style="display:inline-block" >
+        <div id="controlPanel" style="display:flex">
+            <div id="timeContainer" class="ui-widget" style="margin:8px">
+                <div id="timeHeader" class="ui-widget-header">
+                    Times
+                </div>
+                <div id="timeContent" class="ui-widget-content">
+                    <div id="timeText" style="margin:5px">
+                        Sunrise: %02d:%02d<br>
+                        Sunset: %02d:%02d<br>
+                        Last updated: %s<br>
+                    </div>
+                </div>
+            </div>
+            <div id="buttonContainer" class="ui-widget" style="margin:8px">
+                <div id="buttonHeader" class="ui-widget-header">
+                    Controls
+                </div>
+                <div id="buttonContent" class="ui-widget-content" style="text-align:center">
+                    <div id="buttons" style="margin:5px">
+                        <div id="onButton">On</div><br>
+                        <div id="offButton">Off</div><br>
+                        <div id="sunriseButton">Sunrise</div><br>
+                        <div id="sunsetButton">Sunset</div><br>
+                        <div id="sunriseDemoButton">Sunrise Demo</div><br>
+                        <div id="sunsetDemoButton">Sunset Demo</div><br>
+                        <div id="cloudButton">Cloud</div><br>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="buttons" style="text-align:center">
-        <div id="onButton">On</div><br>
-        <div id="offButton">Off</div><br>
-        <div id="sunriseButton">Sunrise</div><br>
-        <div id="sunsetButton">Sunset</div><br>
-        <div id="sunriseDemoButton">Sunrise Demo</div><br>
-        <div id="sunsetDemoButton">Sunset Demo</div><br>
-        <div id="cloudButton">Cloud</div><br>
     </div>
 </body>
 </html>
