@@ -1,9 +1,9 @@
 <html>
 <head>
     <title>Tree Control Panel</title>
-    <link rel="stylesheet" href="/static/jquery-ui.min.css">
-    <script type="text/javascript" src="/static/external/jquery/jquery.js"></script>
-    <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/mint-choc/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function() {
             $("#onButton").button().click(function() { $.get('stripOn');});
@@ -12,13 +12,70 @@
             $("#sunsetButton").button().click(function() { $.get('stripSunset');});
             $("#sunriseDemoButton").button().click(function() { $.get('stripSunriseDemo');});
             $("#sunsetDemoButton").button().click(function() { $.get('stripSunsetDemo');});
-            $("#cloudButton").button().click(function() { $.get('stripCloud');});
-            var buttons = $(".ui-button");
+
+            $("#alarmButton").button().click(function() {
+                var alarmButton = $("#alarmButton");
+                if (alarmButton.text() == "Alarm On"){
+                    alarmButton.children().text("Alarm Off");
+                    $("#alarmHeader").text("Alarm Is On");
+                } else {
+                    alarmButton.children().text("Alarm On");
+                    $("#alarmHeader").text("Alarm Is Off");
+                }
+            });
+
+            $("#alarmHourInput").spinner({
+                min:1,
+                max:12,
+                change: updateHourSlider,
+                stop: updateHourSlider,
+                spin: updateHourSlider
+            });
+
+            $("#alarmMinuteInput").spinner({
+                min:0,
+                max:59,
+                change: updateMinuteSlider,
+                stop: updateMinuteSlider,
+                spin: updateMinuteSlider
+            });
+            
+            $("#alarmHourSlider").slider({
+                orientation:"vertical",
+                min:1,
+                max:12,
+                value:6,
+                slide: function (event, ui){
+                    $("#alarmHourInput").val(ui.value);
+                }
+            }).position({
+                my:"center top", 
+                at:"center bottom+15",
+                of:"#alarmHourInput"
+            });
+
+            $("#alarmMinuteSlider").slider({
+                orientation:"vertical",
+                min:0,
+                max:59,
+                value:30,
+                slide: function (event, ui){
+                    $("#alarmMinuteInput").val(ui.value);
+                }
+            }).position({
+                my:"center top", 
+                at:"center bottom+15",
+                of:"#alarmMinuteInput"
+            });
+
+            var buttons = $("#buttons").children();
             buttons.each(getWidth);
             buttons.width(buttonWidth + 5);
             buttons.css('margin-top', '2px');
             buttons.css('margin-bottom', '2px');
+            $("#alarmContent").height($("#alarmContent").height() + 25);
         });
+        
         var buttonWidth = 0;
         function getWidth(){
             var myWidth = $(this).width();
@@ -26,21 +83,55 @@
                 buttonWidth = myWidth;
             }
         }
+
+        function updateHourSlider(){
+            var hour = $("#alarmHourInput").spinner("value");
+            $("#alarmHourSlider").slider("value", hour);
+        }
+
+        function updateMinuteSlider(){
+            var minute = $("#alarmMinuteInput").spinner("value");
+            $("#alarmMinuteSlider").slider("value", minute);
+        }
+
     </script>
 </head>
 
 <body style="text-align:center" class="ui-widget-content">
     <div id="pageContainer" style="display:inline-block" >
         <div id="controlPanel" style="display:flex">
-            <div id="timeContainer" class="ui-widget" style="margin:8px">
-                <div id="timeHeader" class="ui-widget-header">
-                    Times
+            <div id="leftContainer">
+                <div id="timeContainer" class="ui-widget" style="margin:8px">
+                    <div id="timeHeader" class="ui-widget-header">
+                        Times
+                    </div>
+                    <div id="timeContent" class="ui-widget-content">
+                        <div id="timeText" style="margin:5px">
+                            Sunrise: %02d:%02d<br>
+                            Sunset: %02d:%02d<br>
+                            Last updated: %s<br>
+                        </div>
+                    </div>
                 </div>
-                <div id="timeContent" class="ui-widget-content">
-                    <div id="timeText" style="margin:5px">
-                        Sunrise: %02d:%02d<br>
-                        Sunset: %02d:%02d<br>
-                        Last updated: %s<br>
+                <div id="alarmContainer" class="ui-widget" style="margin:8px">
+                    <div id="alarmHeader" class="ui-widget-header">
+                        Alarm On
+                    </div>
+                    <div id="alarmContent" class="ui-widget-content">
+                        <div id="alarmButtonWrapper" style="margin:8px">
+                            <div id="alarmButton">Alarm Off</div>
+                        </div>
+                        <div id="alarmTime" style="display:flex">
+                            <div id="alarmHour">
+                                <input id="alarmHourInput" size="2" value="6">
+                                <div id="alarmHourSlider" style="height:200px"></div>
+                            </div>
+                            <div id="alarmMinute">
+                                <input id="alarmMinuteInput" size="2" value="30">
+                                <div id="alarmMinuteSlider" style="height:200px"></div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -56,7 +147,6 @@
                         <div id="sunsetButton">Sunset</div><br>
                         <div id="sunriseDemoButton">Sunrise Demo</div><br>
                         <div id="sunsetDemoButton">Sunset Demo</div><br>
-                        <div id="cloudButton">Cloud</div><br>
                     </div>
                 </div>
             </div>
