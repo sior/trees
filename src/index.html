@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/mint-choc/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="/static/jqueryui-vertical-buttonset.js"></script>
     <script>
+        var alarmHour;
+        var alarmMinute;
+        var alarmAMPM;
         $(document).ready(function() {
             $("#onButton").button().click(function() { $.get('stripOn');});
             $("#offButton").button().click(function() { $.get('stripOff');});
@@ -67,7 +71,13 @@
                 at:"center bottom+15",
                 of:"#alarmMinuteInput"
             });
-
+            
+            $("#AMPMButtons").buttonsetv();
+            $("#AMPMButtons").position({
+                my:"center center",
+                at:"center+75 center",
+                of:"#alarmMinuteSlider"
+            });
             var buttons = $("#buttons").children();
             buttons.each(getWidth);
             buttons.width(buttonWidth + 5);
@@ -131,7 +141,14 @@
                                 <div id="alarmMinuteSlider" style="height:200px"></div>
                             </div>
                         </div>
-
+                        <div id="alarmAMPM">
+                            <div id="AMPMButtons">
+                                <input id="AMButton" type="radio" name="AMPMButtons" checked="checked">
+                                <label for="AMButton">AM</label>
+                                <input id="PMButton" type="radio" name="AMPMButtons">
+                                <label for="PMButton">PM</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
