@@ -47,6 +47,30 @@ class Server(object):
     def stripCloud(self):
         call(['stripCloud'])
         return 'stripCloud'
+    
+    @cherrypy.expose
+    def setAMPM(self, ap):
+        if ap == 'am':
+            return 'alarm set to am'
+        elif ap == 'pm':
+            return 'alarm set to pm'
+
+    @cherrypy.expose
+    def setAlarmHour(self, hour):
+        return 'alarm hour set to ' + hour
+
+    @cherrypy.expose
+    def setAlarmMinute(self, minute):
+        return 'alarm minute set to ' + minute
+
+    @cherrypy.expose
+    def turnAlarmOn(self):
+        return 'alarm on'
+
+    @cherrypy.expose
+    def turnAlarmOff(self):
+        return 'alarm off'
+
 
 if __name__ == '__main__':
     conf = {'/':{'tools.staticdir.root' : os.path.abspath(os.getcwd())},
