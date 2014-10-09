@@ -71,6 +71,9 @@ class Server(object):
     def turnAlarmOff(self):
         return 'alarm off'
 
+    @cherrypy.expose
+    def getAlarmStatus(self):
+        return open('/usr/local/share/strip/alarm', 'r').read()
 
 if __name__ == '__main__':
     conf = {'/':{'tools.staticdir.root' : os.path.abspath(os.getcwd())},
