@@ -5,7 +5,7 @@ from subprocess import call
 class Server(object):
     @cherrypy.expose
     def index(self):
-	timeFile = open('/var/log/stripTime.log', 'r')
+	timeFile = open('/usr/local/share/strip/stripTime', 'r')
 	timeData = timeFile.readlines()
         pageFile = open('index.html', 'r')
         page =  pageFile.read() % (int(timeData[0]), int(timeData[1]), int(timeData[2]), int(timeData[3]), timeData[4])

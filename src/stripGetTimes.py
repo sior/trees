@@ -66,7 +66,7 @@ logFile.write(str(updateTime) + " sunrise set to " + str(sunriseHour) + ":" + st
 logFile.write(str(updateTime) + " sunset set to " + str(sunsetHour) + ":" + str(sunsetMinute) + "\n")
 logFile.close()
 
-timeFile = open("/var/log/stripTime.log", "w")
+timeFile = open("/usr/local/share/strip/stripTime", "w")
 timeFile.write(str(sunriseHour) + "\n")
 timeFile.write(str(sunriseMinute) + "\n")
 timeFile.write(str(sunsetHour) + "\n")
